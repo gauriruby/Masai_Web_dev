@@ -1,0 +1,87 @@
+Step 1: Set Up the React Application
+First, run the following commands in your terminal to create a new React application:
+
+bash
+
+npm create vite my-counter-app --template react
+cd my-counter-app
+npm install
+npm run dev
+Once the application is running, you should see the default React welcome page in your browser.
+
+Step 2: Create Components
+1. Create the Button Component
+Create a new file named Button.jsx in the src directory:
+
+jsx
+
+// src/Button.jsx
+import React from 'react';
+
+const Button = ({ label, onClick }) => {
+    return (
+        <button onClick={onClick} style={{ margin: '0 5px', padding: '10px 20px', fontSize: '16px' }}>
+            {label}
+        </button>
+    );
+};
+
+export default Button;
+2. Create the Counter Component
+Create another file named Counter.jsx in the src directory:
+
+jsx
+
+// src/Counter.jsx
+import React, { useState } from 'react';
+import Button from './Button';
+
+const Counter = () => {
+    const [count, setCount] = useState(0);
+
+    const increment = () => {
+        setCount(count + 1);
+    };
+
+    const decrement = () => {
+        setCount(count - 1);
+    };
+
+    return (
+        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+            <h1>Count: {count}</h1>
+            <Button label="Increment" onClick={increment} />
+            <Button label="Decrement" onClick={decrement} />
+        </div>
+    );
+};
+
+export default Counter;
+3. Modify the App Component
+Now, update the App.jsx file to include the Counter component:
+
+jsx
+
+// src/App.jsx
+import React from 'react';
+import Counter from './Counter';
+
+const App = () => {
+    return (
+        <div>
+            <h1>Interactive Counter App</h1>
+            <Counter />
+        </div>
+    );
+};
+
+export default App;
+Step 3: Basic Styling
+You can add some basic styles directly in the components using inline styles, as shown in the example. If you want to create a separate CSS file, you can do that too.
+
+Step 4: Run Your Application
+After implementing the above code, make sure your development server is running. If it's not, run:
+
+npm run dev
+Final Result
+You should now have a simple interactive counter application. The Counter component displays the current count and includes two buttons to increment and decrement the count. The Button component is reusable and accepts props for the label and click event handler.
