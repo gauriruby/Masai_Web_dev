@@ -1,0 +1,112 @@
+Step 1: Setup
+Install Node.js and npm: Make sure you have Node.js and npm installed on your machine. You can download it from Node.js official website.
+
+Create a new React application: Open your terminal and run the following commands:
+
+bash
+
+npx create-react-app interactive-counter-app
+cd interactive-counter-app
+npm start
+You should see the default React welcome page in your browser at http://localhost:3000.
+
+Step 2: App Structure
+Your application will have three components: App, Counter, and Button.
+
+Step 3: Create Components
+Create the Counter Component: Create a new file named Counter.js in the src directory:
+
+jsx
+
+// src/Counter.js
+import React, { useState } from 'react';
+import Button from './Button';
+
+const Counter = () => {
+    const [count, setCount] = useState(0);
+
+    const increment = () => setCount(count + 1);
+    const decrement = () => setCount(count - 1);
+    const reset = () => setCount(0);
+
+    return (
+        <div className="counter">
+            <h1>{count}</h1>
+            <Button label="Increment" onClick={increment} />
+            <Button label="Decrement" onClick={decrement} />
+            <Button label="Reset" onClick={reset} />
+        </div>
+    );
+};
+
+export default Counter;
+Create the Button Component: Create a new file named Button.js in the src directory:
+
+jsx
+
+// src/Button.js
+import React from 'react';
+
+const Button = ({ label, onClick }) => {
+    return (
+        <button onClick={onClick}>
+            {label}
+        </button>
+    );
+};
+
+export default Button;
+Update the App Component: Modify the App.js file to include the Counter component:
+
+jsx
+
+// src/App.js
+import React from 'react';
+import './App.css';
+import Counter from './Counter';
+
+const App = () => {
+    return (
+        <div className="App">
+            <h1>Interactive Counter App</h1>
+            <Counter />
+        </div>
+    );
+};
+
+export default App;
+Step 4: Styling
+Add Basic CSS: Create a CSS file named styles.css in the src directory and add some basic styles:
+
+css
+
+/* src/styles.css */
+.App {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.counter {
+    margin: 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+Import the CSS: Import the CSS file into your App.js:
+
+jsx
+
+// src/App.js
+import './styles.css';
+Step 5: Run the Application
+Now that everything is set up, you can run your application:
+
+bash
+
+npm start
+You should see your interactive counter app in the browser, where you can increment, decrement, and reset the count.
+
